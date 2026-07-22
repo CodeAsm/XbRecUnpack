@@ -22,17 +22,15 @@ namespace XbRecUnpack
             return Encoding.ASCII.GetString(str);
         }
 
-        public static int GetMaxPathSize()
-        {
-            // reflection
-            FieldInfo maxPathField = typeof(Path).GetField("MaxPath",
-                BindingFlags.Static |
-                BindingFlags.GetField |
-                BindingFlags.NonPublic);
+		public static int GetMaxPathSize()
+		{
+			if (OperatingSystem.IsWindows())
+      			return int.MaxValue; // effectively unlimited for this warning
 
-            // invoke the field gettor, which returns 260
-            return (int)maxPathField.GetValue(null);
-        }
+
+			// Linux, macOS, BSD...
+			return 4096;
+		}
 
         public static string ReadNullTermASCII(this BinaryReader reader)
         {

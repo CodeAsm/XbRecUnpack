@@ -62,10 +62,10 @@ namespace XbRecUnpack
             if (string.IsNullOrEmpty(filePath))
             {
                 Console.WriteLine("Usage: ");
-                Console.WriteLine("  XbRecUnpack.exe [-L/-R] <path-to-recctrl.bin> [output-folder]");
-                Console.WriteLine("  XbRecUnpack.exe [-L/-R] <path-to-SDK/remote-recovery.exe> [output-folder]");
-                Console.WriteLine("  XbRecUnpack.exe [-L/-R] <path-to-recovery.iso> [output-folder]");
-                Console.WriteLine("  XbRecUnpack.exe [-L/-R] <path-to-recovery.zip> [output-folder]");
+                Console.WriteLine("  XbRecUnpack [-L/-R] <path-to-recctrl.bin> [output-folder]");
+                Console.WriteLine("  XbRecUnpack [-L/-R] <path-to-SDK/remote-recovery.exe> [output-folder]");
+                Console.WriteLine("  XbRecUnpack [-L/-R] <path-to-recovery.iso> [output-folder]");
+                Console.WriteLine("  XbRecUnpack [-L/-R] <path-to-recovery.zip> [output-folder]");
                 Console.WriteLine("Will try extracting all files to the given output folder");
                 Console.WriteLine("If output folder isn't specified, will extract to \"<input-file-path>_ext\"");
                 Console.WriteLine("-L will only list entries inside input file without extracting them");
