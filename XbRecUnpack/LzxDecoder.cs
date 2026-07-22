@@ -170,7 +170,7 @@ namespace XbRecUnpack
                 // minBlockSize is larger than the input!
                 // create a new stream with minBlockSize length to allow LZX expansion
                 byte[] inputData = new byte[minBlockSize];
-                inData.Read(inputData, 0, inLen);
+               	inData.ReadExactly(inputData.AsSpan(0, inLen));
 
                 inData = new MemoryStream(inputData);
             }
@@ -501,7 +501,7 @@ namespace XbRecUnpack
                             if ((inData.Position + this_run) > endpos)
                                 throw new LzxDataInvalid();
                             byte[] temp_buffer = new byte[this_run];
-                            inData.Read(temp_buffer, 0, this_run);
+                            inData.ReadExactly(temp_buffer);
                             temp_buffer.CopyTo(window, window_posn);
                             window_posn += (uint)this_run;
                             break;

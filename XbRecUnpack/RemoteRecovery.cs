@@ -266,10 +266,11 @@ namespace XbRecUnpack
                             byte[] buffer = new byte[32768];
                             while (sizeRemain > 0)
                             {
-                                int read = (int)Math.Min(buffer.Length, sizeRemain);
-                                srcStream.Read(buffer, 0, read);
-                                destStream.Write(buffer, 0, read);
-                                sizeRemain -= read;
+								int wanted = (int)Math.Min(buffer.Length, sizeRemain);
+								int actual = srcStream.Read(buffer, 0, wanted);
+                              	srcStream.ReadExactly(buffer.AsSpan(0, wanted));
+								destStream.Write(buffer, 0, wanted);
+								sizeRemain -= wanted;
                             }
                         }
 
